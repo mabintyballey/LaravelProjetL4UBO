@@ -15,6 +15,11 @@ use App\Http\Controllers\StudentController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('acceuil');
+
+Route::view('base/','base');
 Route::get('/students-list', [StudentController::class, 'index'])->name('student.index');
 Route::get('/add-student', [StudentController::class, 'create'])->name('student.create');
 Route::post('/add-student', [StudentController::class, 'store'])->name('student.store');
