@@ -1,11 +1,7 @@
-@extends('welcome')
-@section('title', 'Modification')
+@extends('base')
+@section('titre', 'Modification')
 
-
- <!-- Lien vers le fichier CSS -->
- <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-
-@section('content')
+@section('contenu')
 <div class="h3 text-center mt-3">
     Modifier les infos d'un étudiant
  </div>

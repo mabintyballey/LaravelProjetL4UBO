@@ -1,15 +1,12 @@
-@extends('welcome')
-@section('title', 'Creation')
+@extends('base')
+@section('titre', 'Creation')
 
- <!-- Lien vers le fichier CSS -->
- <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-
-@section('content')
+@section('contenu')
 <div class="h3 text-center mt-3">
     Ajouter un étudiant
  </div>
 <form action="{{ route('student.store') }}" method="POST" class="p-2 ">
-    @csrf 
+    @csrf
     <!-- Champ Prénom -->
     <div class="mb-3">
         <label for="first_name" class="form-label">Prénom</label>
