@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProffesseurController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 
@@ -28,3 +29,8 @@ Route::post('/update-student/{id}', [StudentController::class, 'update'])->name(
 Route::get('/delete-student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 
+// Administration app
+Route::view('admin/', 'administration/pages/dashboard');
+Route::get('admin/liste-professeurs/', [ProffesseurController::class, 'index'])->name('proffesseur.list');
+Route::get('admin/ajouter-un-professeur/', [ProffesseurController::class, 'create'])->name('proffesseur.create');
+Route::post('admin/ajouter-un-professeur/', [ProffesseurController::class, 'store'])->name('proffesseur.store');
