@@ -7,70 +7,35 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
-
+    <section id="hero" class="hero section pt-0">
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
-            <h1>Elegant and creative solutions</h1>
-            <p>We are team of talented designers making websites with Bootstrap</p>
+            <h1>Formations et Créativité</h1>
+            <p>Nous offrons des formations de qualité pour vous garantir un avenir meuilleur</p>
             <div class="d-flex">
-              <a href="{{ route('student.index') }}" class="btn-get-started">Listes des étudiants</a>
-              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                <a href="#services" class="btn-get-started">Découvrir nos departements</a>
+                <a href="" class="glightbox btn-watch-video d-flex align-items-center">
+                    <i class="bi bi-play-circle"></i>
+                    <span>Nous rejoindre</span>
+                </a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
-            <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+            <img src="{{ asset('assets/img/hero-img.png') }}" class="img-fluid animated" alt="">
           </div>
         </div>
       </div>
 
     </section><!-- /Hero Section -->
 
-    <!-- Featured Services Section -->
-    <section id="featured-services" class="featured-services section">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="" class="stretched-link">Sed ut perspici</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-              <h4><a href="" class="stretched-link">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Featured Services Section -->
-
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="about section pt-0">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span>About Us<br></span>
-        <h2>About</h2>
+        <span>A PROPOS<br></span>
+        <h2>A propos de nous</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
@@ -78,11 +43,11 @@
 
         <div class="row gy-4">
           <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/about.png" class="img-fluid" alt="">
-            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+            <img src="{{ asset('assets/img/about.png') }}" class="img-fluid" alt="">
+            <a href="" class="glightbox pulsating-play-btn"></a>
           </div>
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3><span class="align-items-center">❤️💛💚</span><br>Meuilleur université, qui enseigne les métiers du numérique</h3>
             <p class="fst-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -112,29 +77,29 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
+              <span data-purecounter-start="0" data-purecounter-end="3232" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Etudiants diplômé</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
+              <p>Personnels</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <span data-purecounter-start="0" data-purecounter-end="53" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Matières enseignées</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Depatements</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -144,13 +109,13 @@
 
     </section><!-- /Stats Section -->
 
-    <!-- Services Section -->
+    <!-- Departements Section -->
     <section id="services" class="services section light-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span>Services</span>
-        <h2>Services</h2>
+        <span>DEPARTMENTS</span>
+        <h2>Departements</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
@@ -164,7 +129,7 @@
                 <i class="bi bi-activity"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Nesciunt Mete</h3>
+                <h3>Genie Informatique</h3>
               </a>
               <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
             </div>
@@ -176,7 +141,7 @@
                 <i class="bi bi-broadcast"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Eosle Commodi</h3>
+                <h3>Genie Civil</h3>
               </a>
               <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
             </div>
@@ -188,7 +153,7 @@
                 <i class="bi bi-calendar4-week"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Velit Doloremque</h3>
+                <h3>Genie mécanique</h3>
               </a>
               <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
               <a href="service-details.html" class="stretched-link"></a>
@@ -208,8 +173,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span>Section Title</span>
-        <h2>Team</h2>
+        <span>Nos professeurs</span>
+        <h2>NOS PROFESSEURS</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 

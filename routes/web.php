@@ -16,21 +16,36 @@ use App\Http\Controllers\StudentController;
 |
 */
 
+// Home page
 Route::get('/', function () {
     return view('welcome');
 })->name('acceuil');
 
 Route::view('base/','base');
+
+
+//--- Administration app
+
+Route::get('/admin/login', function () {
+    return view('administration.pages.login');
+})->name('admin.login');
+
+Route::get('/admin/register', function () {
+    return view('administration.pages.register');
+})->name('admin.register');
+
+// Dashboard
+Route::view('admin/', 'administration/pages/dashboard')->name('administration.dashboard');
+
+// Professeurs
+Route::get('admin/liste-professeurs/', [ProffesseurController::class, 'index'])->name('proffesseur.list');
+Route::get('admin/ajouter-un-professeur/', [ProffesseurController::class, 'create'])->name('proffesseur.create');
+Route::post('admin/ajouter-un-professeur/', [ProffesseurController::class, 'store'])->name('proffesseur.store');
+
+// Etudiants
 Route::get('/students-list', [StudentController::class, 'index'])->name('student.index');
 Route::get('/add-student', [StudentController::class, 'create'])->name('student.create');
 Route::post('/add-student', [StudentController::class, 'store'])->name('student.store');
 Route::get('/update-student/{id}', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/update-student/{id}', [StudentController::class, 'update'])->name('student.update');
 Route::get('/delete-student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
-
-
-// Administration app
-Route::view('admin/', 'administration/pages/dashboard');
-Route::get('admin/liste-professeurs/', [ProffesseurController::class, 'index'])->name('proffesseur.list');
-Route::get('admin/ajouter-un-professeur/', [ProffesseurController::class, 'create'])->name('proffesseur.create');
-Route::post('admin/ajouter-un-professeur/', [ProffesseurController::class, 'store'])->name('proffesseur.store');

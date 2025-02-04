@@ -19,13 +19,13 @@
 
             <div class="table-responsive">
               <table
-                id="add-row"
+                id="multi-filter-select"
                 class="display table table-striped table-hover"
               >
                 <thead>
                   <tr>
                     <th>Prénom et Nom</th>
-                    <th>Sexe</th>
+                    <th>Genre</th>
                     <th>Matricule</th>
                     <th>Adresse email</th>
                     <th style="width: 10%">Action</th>
@@ -35,7 +35,7 @@
                     @forelse ($professeurs as $professeur)
                     <tr>
                         <td>{{ $professeur->prenom }} {{ $professeur->nom }}</td>
-                        <td>{{ $professeur->sexe == 'masculin' ? 'Masculin' : 'Féminin' }}</td>
+                        <td>{{ $professeur->genre == 'masculin' ? 'Masculin' : 'Féminin' }}</td>
                         <td>{{ $professeur->matricule }}</td>
                         <td>{{ $professeur->email }}</td>
                         <td>
@@ -72,3 +72,8 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <!-- Datatables -->
+
+@endpush

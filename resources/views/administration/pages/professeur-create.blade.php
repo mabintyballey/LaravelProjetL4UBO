@@ -10,7 +10,7 @@
         <div class="card-body">
             <form action="{{ route('proffesseur.store') }}" method="post">
                 @csrf
-                
+
                 <div class="form-group">
                     <label for="nom">Nom: </label>
                     <input class="form-control" type="text" name="nom" id="nom">
@@ -27,8 +27,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="sexe">sexe: </label>
-                    <select class="form-select" name="sexe" id="sexe">
+                    <label for="genre">genre: </label>
+                    <select class="form-select" name="genre" id="genre">
                         <option value="feminin">Féminin</option>
                         <option value="masculin">Masculin</option>
                     </select>
