@@ -14,7 +14,11 @@ class ProffesseurController extends Controller
      */
     public function index()
     {
-        $professeurs = User::where('role_id', '=', 1)->get();
+        //$professeurs = User::where('role_id', '=', 1)->get();
+
+        $professeurs = User::whereHas('role', function ($query) {
+            $query->where('nom', 'professeur');
+        })->get();
 
         return view('administration.pages.professeur-list', [
             'professeurs' => $professeurs
@@ -43,7 +47,7 @@ class ProffesseurController extends Controller
             'age' => $request->age,
             'email' => $request->email,
             'matricule' => $this->generateMatricule(),
-            'sexe' => $request->sexe,
+            'genre' => $request->genre,
             'password' => Hash::make('password'),
             'role_id' => 1
         ]);

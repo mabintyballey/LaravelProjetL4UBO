@@ -9,7 +9,7 @@
     />
     <link
       rel="icon"
-      href="{{ asset('administration/assets/img/kaiadmin/favicon.ico') }}"
+      href="{{ asset('administration/assets/img/ubo_logo.jpg') }}"
       type="image/x-icon"
     />
 
