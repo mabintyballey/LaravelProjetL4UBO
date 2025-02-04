@@ -16,6 +16,6 @@
 <script src="{{ asset('administration/assets/js/kaiadmin.min.js') }}"></script>
 
 <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-<script src="{{ asset('administration/assets/js/setting-demo.js') }}"></script>
+<script src="{{ asset(path: 'administration/assets/js/setting-demo.js') }}"></script>
 
 @stack('scripts')

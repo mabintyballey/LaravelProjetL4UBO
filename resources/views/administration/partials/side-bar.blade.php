@@ -31,7 +31,7 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
       <div class="sidebar-content">
         <ul class="nav nav-secondary">
-          <li class="nav-item">
+          <li class="nav-item {{ Route::is('administration.dashboard') ? 'active' : '' }}">
             <a href="{{ route('administration.dashboard') }}">
               <i class="fas fa-home"></i>
               <p>Tableau de bord</p>
@@ -45,7 +45,7 @@
             <h4 class="text-section">Menu</h4>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item {{ Route::is('proffesseur.list') ? 'active' : '' }}">
             <a href="{{ route('proffesseur.list') }}">
               <i class="icon-briefcase"></i>
               <p>Professeurs</p>
@@ -101,10 +101,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.login') }}">
-              <i class="icon-logout"></i>
-              <p class="btn btn-danger text-light">Se deconnecter</p>
-            </a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit">
+                  <i class="icon-logout"></i>
+                  <p class="btn btn-danger text-light">Se deconnecter</p>
+                </button>
+            </form>
           </li>
         </ul>
       </div>

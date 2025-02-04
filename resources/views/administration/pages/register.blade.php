@@ -62,7 +62,9 @@
                     class="img-fluid" alt="Phone image">
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                  <form action="">
+                  <form method="POST" action="{{ route('register') }}">
+                    @csrf
+
                     <!-- First_name and Last_name input -->
                     <div class="form-outline mb-4">
                         <input type="text" id="form1ExampleName" class="form-control form-control-lg" />
@@ -81,20 +83,32 @@
 
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                      <input type="email" id="form1Example13" class="form-control form-control-lg" />
+                      <input type="email" name="email" value="{{ old('email') }}" required autocomplete="email" id="form1Example13" class="form-control form-control-lg" />
                       <label class="form-label" for="form1Example13">Adresse email</label>
+
+                      @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                      <input type="password" id="form1Example23" class="form-control form-control-lg" />
+                      <input type="password" name="password" required id="form1Example23" class="form-control form-control-lg" />
                       <label class="form-label" for="form1Example23">Mot de passe</label>
+
+                      @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
                     </div>
 
-                    <!-- Password input -->
+                    <!-- Confirm Password input -->
                     <div class="form-outline mb-4">
-                        <input type="password" id="form1ExamplePassword" class="form-control form-control-lg" />
+                        <input type="password" name="password_confirmation" required id="form1ExamplePassword" class="form-control form-control-lg" />
                         <label class="form-label" for="form1ExamplePassword">Confirmer votre mot de passe</label>
+
+                        @error('password_confirmation')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <!-- Submit button -->
@@ -107,7 +121,7 @@
                     <p class="text-center fw-bold mx-3 mb-0 text-muted">OU</p>
                   </div>
 
-                  <a href="{{ route('admin.login') }}" class="btn btn-primary btn-lg mx-auto" style="background-color: #3b5998; width: 100%">
+                  <a href="{{ route('login') }}" class="btn btn-primary btn-lg mx-auto" style="background-color: #3b5998; width: 100%">
                     <i class="icon-login"></i> Se connecter
                   </a>
                 </div>

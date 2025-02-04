@@ -18,7 +18,11 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="{{ route('admin.login') }}">Se Connecter</a>
+    @guest
+        @if (Route::has('register'))
+            <a class="btn-getstarted" href="{{ route('register') }}">Nous rejoindre</a>
+        @endif
+    @endguest
 
     </div>
   </header>
