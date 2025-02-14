@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\ProffesseurController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
@@ -60,6 +61,9 @@ Route::post('/add-student', [StudentController::class, 'store'])->name('student.
 Route::get('/update-student/{id}', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/update-student/{id}', [StudentController::class, 'update'])->name('student.update');
 Route::get('/delete-student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
-
-
+// matieres
+Route::get('/matieres-list', [MatiereController::class, 'index'])->name('matieres.index');
+Route::get('/add-matiere', [MatiereController::class, 'create'])->name('matieres.create');
+Route::post('/matieres', [MatiereController::class, 'store'])->name('matieres.store');
+Route::delete('/matieres/{matiere}', [MatiereController::class, 'destroy'])->name('matieres.destroy');
 require __DIR__.'/auth.php';

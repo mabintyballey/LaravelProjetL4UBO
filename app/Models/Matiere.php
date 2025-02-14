@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Matiere extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     public function professeurs() {
         return $this->belongsToMany(User::class);
     }

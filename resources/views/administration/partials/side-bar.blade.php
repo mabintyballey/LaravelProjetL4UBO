@@ -82,7 +82,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="">
+            <a href="{{ route('matieres.index') }}">
               <i class="icon-calendar"></i>
               <p>Matières</p>
             </a>

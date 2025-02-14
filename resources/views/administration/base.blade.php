@@ -19,5 +19,5 @@
     </div>
 
     @include('administration.partials.javascript_section')
-  </body>
+  </body> 
 </html>
