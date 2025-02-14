@@ -42,10 +42,9 @@ class MatiereController extends Controller
                 'nom' => $request->nom,
             ]);
     
-            return response()->json($matiere, 201); // Retourner la matière ajoutée en JSON
+            return response()->json($matiere, 201); 
     
         } catch (\Exception $e) {
-            // Si une exception se produit, retourner une erreur
             return response()->json(['error' => 'Erreur lors de l\'ajout de la matière.'], 500);
         }
     }

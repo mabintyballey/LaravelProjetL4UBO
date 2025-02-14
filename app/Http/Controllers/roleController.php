@@ -11,7 +11,7 @@ class roleController extends Controller
      */
     public function index()
     {
-        $roles = Role::
+
     }
 
     /**
