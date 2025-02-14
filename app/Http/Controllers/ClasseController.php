@@ -13,7 +13,8 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        //
+        $classes = Classe::all();
+        return view('administrateur.pages.matieres.index', compact('classes'));
     }
 
     /**
@@ -21,7 +22,8 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        //
+            $classes = Classe::all();
+            return view('classes.create', compact('classes')); 
     }
 
     /**

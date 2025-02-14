@@ -46,15 +46,30 @@
             </div>
         </div>
         <div class="col-md-4">
-             <h2>Ajouter une matière</h2>
-             <input type="text" id="matiere-nom" class="form-control" placeholder="Nom de la matière">
+           <h2>Ajouter une matière</h2>
+
+            <!-- Sélecteur de départements -->
+            <select id="departement-id" class="form-control mt-3">
+                <option value="">Choisir un département</option>
+                @foreach($departements as $departement)
+                    <option value="{{ $departement->id }}">{{ $departement->nom }}</option>
+                @endforeach
+            </select>
+
+            <!-- Sélecteur de classes -->
+            <select id="classe-id" class="form-control mt-3 mb-3" disabled>
+                <option value="">Choisir une classe</option>
+            </select>
+        
+            <!-- Nom de la matière -->
+            <input type="text" id="matiere-nom" class="form-control" placeholder="Nom de la matière" disabled>
             <div class="d-flex justify-content-around">
-                <button class="btn btn-success mt-3" id="ajouter-matiere" data-url="{{ route('matieres.store') }}">➕ Ajouter</button>
-                <button class="btn btn-secondary mt-3 mr-5 " id="annuler-ajout" type="button">❌ Annuler</button>
-            </div> 
-             <!-- Token CSRF -->
-             <meta name="csrf-token" content="{{ csrf_token() }}">
-        </div>
+                <button class="btn btn-success mt-3" id="ajouter-matiere" data-url="{{ route('matieres.store') }}" disabled>➕ Ajouter</button>
+                <button class="btn btn-secondary mt-3 mr-5" id="annuler-ajout" type="button">❌ Annuler</button>
+            </div>
+            <!-- Token CSRF -->
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+       </div>
 
     </div>
 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\ProffesseurController;
 use Illuminate\Support\Facades\Route;
@@ -65,5 +66,11 @@ Route::get('/delete-student/{id}', [StudentController::class, 'destroy'])->name(
 Route::get('/matieres-list', [MatiereController::class, 'index'])->name('matieres.index');
 Route::get('/add-matiere', [MatiereController::class, 'create'])->name('matieres.create');
 Route::post('/matieres', [MatiereController::class, 'store'])->name('matieres.store');
+Route::get('/get-classes-by-departement/{departementId}', [MatiereController::class, 'getClassesByDepartement']);
 Route::delete('/matieres/{matiere}', [MatiereController::class, 'destroy'])->name('matieres.destroy');
 require __DIR__.'/auth.php';
+//classes
+Route::get('/classe-list', [ClasseController::class, 'index'])->name('classes.index');
+Route::get('/add-classe', [ClasseController::class, 'create'])->name('classes.create');
+Route::post('/classes', [ClasseController::class, 'store'])->name('classes.store');
+Route::delete('/classes/{classe}', [ClasseController::class, 'destroy'])->name('classes.destroy');

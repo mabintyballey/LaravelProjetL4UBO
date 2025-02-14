@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('matieres', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
+        Schema::table('matieres', function (Blueprint $table) {
             $table->unsignedBigInteger('classe_id');
-            $table->timestamps();
-    
-            // Ajout de la contrainte de clé étrangère
             $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade');
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('matieres');
+        Schema::table('matieres', function (Blueprint $table) {
+            //
+        });
     }
 };
