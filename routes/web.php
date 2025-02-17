@@ -4,7 +4,7 @@ use App\Http\Controllers\ProffesseurController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\DepartementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +60,17 @@ Route::post('/add-student', [StudentController::class, 'store'])->name('student.
 Route::get('/update-student/{id}', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/update-student/{id}', [StudentController::class, 'update'])->name('student.update');
 Route::get('/delete-student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
+
+//Departements
+
+
+
+Route::get('/departements', [DepartementController::class, 'index'])->name('departement.index');
+Route::post('/departements', [DepartementController::class, 'store'])->name('departement.store');
+Route::delete('/departements/{id}', [DepartementController::class, 'destroy']);
+
+
+
 
 
 require __DIR__.'/auth.php';
