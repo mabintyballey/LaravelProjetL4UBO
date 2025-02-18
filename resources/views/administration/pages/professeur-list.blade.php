@@ -39,27 +39,24 @@
                         <td>{{ $professeur->matricule }}</td>
                         <td>{{ $professeur->email }}</td>
                         <td>
-                          <div class="form-button-action">
-                            <button
-                              type="button"
-                              data-bs-toggle="tooltip"
-                              title=""
-                              class="btn btn-link btn-primary btn-lg"
-                              data-original-title="Edit Task"
-                            >
-                              <i class="fa fa-edit"></i>
-                            </button>
-                            <button
-                              type="button"
-                              data-bs-toggle="tooltip"
-                              title=""
-                              class="btn btn-link btn-danger"
-                              data-original-title="Remove"
-                            >
-                              <i class="fa fa-times"></i>
-                            </button>
-                          </div>
-                        </td>
+    <div class="form-button-action">
+        <!-- Bouton Editer -->
+        <a href="{{ route('professeur.edit', $professeur->id) }}" class="btn btn-link btn-primary btn-lg" data-bs-toggle="tooltip" title="Editer">
+            <i class="fa fa-edit"></i>
+        </a>
+        
+        <!-- Formulaire pour supprimer -->
+        <form action="{{ route('professeur.destroy', $professeur->id) }}" method="POST" style="display: inline;">
+    @csrf
+    @method('DELETE')  <!-- Cette ligne simule la méthode DELETE -->
+    <button type="submit" class="btn btn-link btn-danger" data-bs-toggle="tooltip" title="Supprimer">
+        <i class="fa fa-times"></i>
+    </button>
+</form>
+
+    </div>
+</td>
+
                     </tr>
                     @empty
 

@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Professeur;
 
 class ProffesseurController extends Controller
 {
@@ -64,17 +65,24 @@ class ProffesseurController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        // Trouver le professeur par son ID
+        $professeur = Professeur::findOrFail($id);
+    
+        // Retourner la vue avec les détails du professeur
+        return view('professeur.show', compact('professeur'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    // Méthode pour afficher le formulaire d'édition
+        public function edit($id)
     {
-        //
+        $professeur = Professeur::findOrFail($id);
+        return view('professeur.edit', compact('professeur'));
     }
 
     /**
@@ -88,8 +96,18 @@ class ProffesseurController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
-    {
-        //
+
+     public function destroy($id)
+{
+    $professeur = Professeur::find($id);
+
+    if ($professeur) {
+        $professeur->delete();
+        return response()->json(['message' => 'Professeur supprimé avec succès']);
+    } else {
+        return response()->json(['message' => 'Professeur non trouvé'], 404);
     }
+}
+
+     
 }

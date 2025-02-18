@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\PersonnelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,12 @@ Route::view('admin/', 'administration/pages/dashboard')->name('administration.da
 Route::get('admin/liste-professeurs/', [ProffesseurController::class, 'index'])->name('proffesseur.list');
 Route::get('admin/ajouter-un-professeur/', [ProffesseurController::class, 'create'])->name('proffesseur.create');
 Route::post('admin/ajouter-un-professeur/', [ProffesseurController::class, 'store'])->name('proffesseur.store');
+Route::get('/professeur/{professeur}', [ProffesseurController::class, 'show'])->name('professeur.show');
+Route::delete('/professeur/{professeur}', [ProffesseurController::class, 'destroy'])->name('professeur.destroy');
+Route::get('/professeur/{professeur}/edit', [ProffesseurController::class, 'edit'])->name('professeur.edit');
+
+
+
 
 // Etudiants
 Route::get('/students-list', [StudentController::class, 'index'])->name('student.index');
@@ -62,12 +69,25 @@ Route::post('/update-student/{id}', [StudentController::class, 'update'])->name(
 Route::get('/delete-student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 //Departements
-
-
-
 Route::get('/departements', [DepartementController::class, 'index'])->name('departement.index');
 Route::post('/departements', [DepartementController::class, 'store'])->name('departement.store');
 Route::delete('/departements/{id}', [DepartementController::class, 'destroy']);
+
+//Personnel
+// Route pour afficher la liste du personnel
+Route::get('/personnel', [PersonnelController::class, 'index'])->name('personnel.list');
+
+// Route pour afficher le formulaire de création du personnel
+Route::get('/personnel/create', [PersonnelController::class, 'create'])->name('personnel.create');
+
+// Route pour enregistrer un nouveau personnel
+Route::post('/personnel', [PersonnelController::class, 'store'])->name('personnel.store');
+
+// Route pour afficher le formulaire de modification du personnel
+Route::get('/personnel/{id}/edit', [PersonnelController::class, 'edit'])->name('personnel.edit');
+
+// Route pour supprimer un membre du personnel
+Route::delete('/personnel/{id}', [PersonnelController::class, 'destroy'])->name('personnel.destroy');
 
 
 
