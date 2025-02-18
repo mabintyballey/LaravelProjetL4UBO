@@ -3,75 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departement;
-use App\Http\Requests\StoreDepartementRequest;
-use App\Http\Requests\UpdateDepartementRequest;
+use App\Models\Licence;
+use Illuminate\Http\Request;
 
 class DepartementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Affiche la page des départements
     public function index()
     {
-        //
+        $departements = Departement::ALL(); // On récupère tous les départements avec leurs licences associées.
+    
+        return view('administration.pages.departement', compact('departements'));
     }
+    
+    public function store(Request $request)
+{
+    // Validation des données
+    $validated = $request->validate([
+        'nom' => 'required|string|max:255',
+    ]);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreDepartementRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Departement $departement)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Departement $departement)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateDepartementRequest $request, Departement $departement)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Departement $departement)
-    {
-        //
-    }
-    public function getClasses($id) {
-        $departement = Departement::find($id);
+    // Création du département et récupération de l'objet créé
+    $departement = Departement::create([
+        'nom' => $validated['nom'],
+    ]);
         
-        if ($departement && $departement->classes) {
-            
-            $classes = $departement->classes; 
-            return response()->json(['classes' => $classes]);
-        } else {
-            return response()->json(['classes' => []]);  
-        }
-    }
 }
+
+public function destroy($id)
+{
+    // Trouver le département par ID et le supprimer
+    $departement = Departement::findOrFail($id);
+    $departement->delete();
+
+    // Retourner une réponse
+    return response()->json(['message' => 'Département supprimé avec succès']);
+}
+
+   
+}
+

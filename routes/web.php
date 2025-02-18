@@ -9,7 +9,7 @@ use App\Http\Controllers\etudiantControler;
 use App\Http\Controllers\personnelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\roleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,12 +73,8 @@ Route::post('/add-student', [StudentController::class, 'store'])->name('student.
 Route::get('/update-student/{id}', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/update-student/{id}', [StudentController::class, 'update'])->name('student.update');
 Route::get('/delete-student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
-// matieres
-Route::get('/matieres-list', [MatiereController::class, 'index'])->name('matieres.index');
-Route::get('/add-matiere', [MatiereController::class, 'create'])->name('matieres.create');
-Route::post('/matieres', [MatiereController::class, 'store'])->name('matieres.store');
-Route::get('/get-classes-by-departement/{departementId}', [MatiereController::class, 'getClassesByDepartement']);
-Route::delete('/matieres/{matiere}', [MatiereController::class, 'destroy'])->name('matieres.destroy');
+
+
 require __DIR__.'/auth.php';
 //classes
 Route::get('classe-list', [ClasseController::class, 'index'])->name('classes.index');
@@ -88,5 +84,5 @@ Route::get('/departement/{id}/classes', [DepartementController::class, 'getClass
 Route::delete('/classes/{classe}', [ClasseController::class, 'destroy'])->name('delete-classe');
 Route::get('/departement/{departementId}/classes', [ClasseController::class, 'getClassesByDepartement']);
 // roles
-Route::get('/roles-list', [RoleController::class, 'index'])->name('roles.index');
-Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+Route::get('/roles-list', [roleController::class, 'index'])->name('roles.index');
+Route::post('/roles', [roleController::class, 'store'])->name('roles.store');
