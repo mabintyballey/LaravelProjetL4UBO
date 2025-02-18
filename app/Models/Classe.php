@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classe extends Model
 {
-    use HasFactory;
+    public function departement() {
+        return $this->belongsTo(Departement::class);  
+    }
+    public function matieres() {
+        return $this->hasMany(Matiere::class);
+    }
+
 }

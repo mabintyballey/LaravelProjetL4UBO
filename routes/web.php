@@ -4,9 +4,12 @@ use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\ProffesseurController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\etudiantControler;
+use App\Http\Controllers\personnelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,11 +54,19 @@ Route::middleware('auth')->group(function () {
 Route::view('admin/', 'administration/pages/dashboard')->name('administration.dashboard');
 
 // Professeurs
-Route::get('admin/liste-professeurs/', [ProffesseurController::class, 'index'])->name('proffesseur.list');
-Route::get('admin/ajouter-un-professeur/', [ProffesseurController::class, 'create'])->name('proffesseur.create');
-Route::post('admin/ajouter-un-professeur/', [ProffesseurController::class, 'store'])->name('proffesseur.store');
+Route::get('admin/liste-professeurs/', [ProffesseurController::class, 'index'])->name('professeur.list');
+Route::get('admin/ajouter-un-professeur/', [ProffesseurController::class, 'create'])->name('professeur.create');
+Route::post('admin/ajouter-un-professeur/', [ProffesseurController::class, 'store'])->name('professeur.store');
 
 // Etudiants
+Route::get('admin/liste-etudiant/', [etudiantControler::class, 'index'])->name('etudiant.list');
+Route::get('admin/ajouter-un-etudiant/', [etudiantControler::class, 'create'])->name('etudiant.create');
+Route::post('admin/ajouter-un-etudiant/', [etudiantControler::class, 'store'])->name('etudiant.store');
+// Etudiants
+Route::get('admin/liste-personnel/', [personnelController::class, 'index'])->name('personnel.list');
+Route::get('admin/ajouter-un-personnel/', [personnelController::class, 'create'])->name('personnel.create');
+Route::post('admin/ajouter-un-personnel/', [personnelController::class, 'store'])->name('personnel.store');
+// Students 1 projet
 Route::get('/students-list', [StudentController::class, 'index'])->name('student.index');
 Route::get('/add-student', [StudentController::class, 'create'])->name('student.create');
 Route::post('/add-student', [StudentController::class, 'store'])->name('student.store');
@@ -70,7 +81,12 @@ Route::get('/get-classes-by-departement/{departementId}', [MatiereController::cl
 Route::delete('/matieres/{matiere}', [MatiereController::class, 'destroy'])->name('matieres.destroy');
 require __DIR__.'/auth.php';
 //classes
-Route::get('/classe-list', [ClasseController::class, 'index'])->name('classes.index');
-Route::get('/add-classe', [ClasseController::class, 'create'])->name('classes.create');
-Route::post('/classes', [ClasseController::class, 'store'])->name('classes.store');
-Route::delete('/classes/{classe}', [ClasseController::class, 'destroy'])->name('classes.destroy');
+Route::get('classe-list', [ClasseController::class, 'index'])->name('classes.index');
+Route::post('/add-classe', [ClasseController::class, 'store'])->name('classes.store');
+Route::get('/classe/{id}/matieres', [ClasseController::class, 'getMatieres']);
+Route::get('/departement/{id}/classes', [DepartementController::class, 'getClasses']);
+Route::delete('/classes/{classe}', [ClasseController::class, 'destroy'])->name('delete-classe');
+Route::get('/departement/{departementId}/classes', [ClasseController::class, 'getClassesByDepartement']);
+// roles
+Route::get('/roles-list', [RoleController::class, 'index'])->name('roles.index');
+Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');

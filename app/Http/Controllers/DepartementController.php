@@ -63,4 +63,15 @@ class DepartementController extends Controller
     {
         //
     }
+    public function getClasses($id) {
+        $departement = Departement::find($id);
+        
+        if ($departement && $departement->classes) {
+            
+            $classes = $departement->classes; 
+            return response()->json(['classes' => $classes]);
+        } else {
+            return response()->json(['classes' => []]);  
+        }
+    }
 }

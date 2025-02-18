@@ -7,10 +7,10 @@
       class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
     >
       <div>
-        <h3 class="fw-bold mb-3">Liste des professeurs</h3>
+        <h3 class="fw-bold mb-3">Liste des personnel</h3>
       </div>
       <div class="ms-md-auto py-2 py-md-0">
-        <a href="{{ route('professeur.create') }}" class="btn btn-primary btn-round">Ajouter un professeur</a>
+        <a href="{{ route('personnel.create') }}" class="btn btn-primary btn-round">Ajouter un personnel</a>
       </div>
     </div>
 
@@ -32,12 +32,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @forelse ($professeurs as $professeur)
+                    @forelse ($personnels as $personnel)
                     <tr>
-                        <td>{{ $professeur->prenom }} {{ $professeur->nom }}</td>
-                        <td>{{ $professeur->genre == 'masculin' ? 'Masculin' : 'Féminin' }}</td>
-                        <td>{{ $professeur->matricule }}</td>
-                        <td>{{ $professeur->email }}</td>
+                        <td>{{ $personnel->prenom }} {{ $personnel->nom }}</td>
+                        <td>{{ $personnel->genre == 'masculin' ? 'Masculin' : 'Féminin' }}</td>
+                        <td>{{ $personnel->matricule }}</td>
+                        <td>{{ $personnel->email }}</td>
                         <td>
                           <div class="form-button-action">
                             <button

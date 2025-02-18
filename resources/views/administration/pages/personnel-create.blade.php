@@ -5,10 +5,10 @@
 <div class="page-inner">
     <div class="card">
         <div class="card-header p-4">
-            <div class="card-title">Ajout d'un professeur</div>
+            <div class="card-title">Ajout d'un personnel</div>
         </div>
         <div class="card-body">
-            <form action="{{ route('professeur.store') }}" method="post">
+            <form action="{{ route('personnel.store') }}" method="post">
                 @csrf
 
                 <div class="form-group">

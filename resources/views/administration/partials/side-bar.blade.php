@@ -46,25 +46,25 @@
           </li>
 
           <li class="nav-item {{ Route::is('proffesseur.list') ? 'active' : '' }}">
-            <a href="{{ route('proffesseur.list') }}">
+            <a href="{{ route('professeur.list') }}">
               <i class="icon-briefcase"></i>
               <p>Professeurs</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="">
+            <a href="{{ route('personnel.list') }}">
                 <i class="icon-user"></i>
                 <p>Personnels</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="">
+            <a href="{{ route('etudiant.list') }}">
               <i class="icon-graduation"></i>
               <p>Etudiants</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="">
+            <a href="{{route('roles.index')}}">
               <i class="icon-book-open"></i>
               <p>Roles</p>
             </a>
@@ -76,7 +76,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="">
+            <a href="{{ route('classes.index') }}">
               <i class="icon-grid"></i>
               <p>Classes</p>
             </a>

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
-use App\Http\Requests\StoreClasseRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateClasseRequest;
+use App\Models\Departement;
 
 class ClasseController extends Controller
 {
@@ -14,7 +15,8 @@ class ClasseController extends Controller
     public function index()
     {
         $classes = Classe::all();
-        return view('administrateur.pages.matieres.index', compact('classes'));
+        $departements = Departement::all();
+        return view('administration.pages.classes.index', compact('classes', 'departements'));
     }
 
     /**
@@ -22,16 +24,41 @@ class ClasseController extends Controller
      */
     public function create()
     {
-            $classes = Classe::all();
-            return view('classes.create', compact('classes')); 
+          
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClasseRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'departement_id' => 'required|exists:departements,id',
+        ]);
+    
+        // Vérifier si la classe existe déjà dans ce département
+        $existingClasse = Classe::where('nom', $request->nom)
+                                ->where('departement_id', $request->departement_id)
+                                ->first();
+    
+        if ($existingClasse) {
+            return response()->json(['error' => 'Cette classe existe déjà dans ce département'], 400);
+        }
+    
+        $classe = new Classe();
+        $classe->nom = $request->nom;
+        $classe->departement_id = $request->departement_id;
+        $classe->save();
+    
+        return response()->json(['classe' => $classe], 200);
+    }
+
+    
+    public function getClassesByDepartement($departementId)
+    {
+        $classes = Classe::where('departement_id', $departementId)->get();
+        return response()->json(['classes' => $classes]);
     }
 
     /**
@@ -65,4 +92,21 @@ class ClasseController extends Controller
     {
         //
     }
+    //methode pour afficher les matieres lier à une classe
+    public function getMatieres($id) {
+        $classe = Classe::find($id);
+    
+        if (!$classe) {
+            return response()->json(['error' => 'Classe non trouvée'], 404);
+        }
+        $matieres = $classe->matieres;
+    
+        return response()->json([
+            'niveau' => $classe->niveau,  
+            'matieres' => $matieres      
+        ]);
+    }
+    
+    
+    
 }

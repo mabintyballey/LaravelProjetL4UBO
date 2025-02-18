@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class ProffesseurController extends Controller
+
+class etudiantControler extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +17,12 @@ class ProffesseurController extends Controller
     {
         //$professeurs = User::where('role_id', '=', 1)->get();
 
-        $professeurs = User::whereHas('role', function ($query) {
-            $query->where('nom', 'professeur');
+        $etudiants = User::whereHas('role', function ($query) {
+            $query->where('nom', 'etudiant');
         })->get();
 
-        return view('administration.pages.professeur-list', [
-            'professeurs' => $professeurs
+        return view('administration.pages.etudiant-index', [
+            'etudiants' => $etudiants
         ]);
     }
 
@@ -31,7 +32,7 @@ class ProffesseurController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('administration.pages.professeur-create', [
+        return view('administration.pages.etudiant-create', [
             'roles' => $roles
         ]);
     }
@@ -41,8 +42,8 @@ class ProffesseurController extends Controller
      */
     public function store(Request $request)
     {
-        $roleId = Role::where('nom', 'professeur')->first()->id;
-        $professeur = User::create([
+        $roleId = Role::where('nom', 'etudiant')->first()->id;
+        $etudiant = User::create([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'age' => $request->age,
@@ -53,9 +54,9 @@ class ProffesseurController extends Controller
             'role_id' => $roleId, 
         ]);
     
-        $professeur->save();
+        $etudiant->save();
     
-        return redirect()->route('professeur.list');
+        return redirect()->route('etudiant.list');
     }
     
 
@@ -66,7 +67,7 @@ class ProffesseurController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(string $id)
     {
         //
     }
@@ -74,7 +75,7 @@ class ProffesseurController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(string $id)
     {
         //
     }
@@ -82,7 +83,7 @@ class ProffesseurController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -90,7 +91,7 @@ class ProffesseurController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(string $id)
     {
         //
     }
